@@ -1,0 +1,16 @@
+# TWSE Security Monitor Cron Setup
+# Add the following line to your crontab to run the script every 12 hours
+
+# Run at 6:00 AM and 6:00 PM every day
+0 6,18 * * * php /path/to/twse_security_monitor.php
+
+# How to add this to your crontab:
+# 1. Open the crontab editor:
+#    $ crontab -e
+#
+# 2. Add the line above, replacing "/path/to/" with the actual path to the script
+#
+# 3. Save and exit the editor
+#
+# Note: Make sure PHP is in your PATH or use the full path to the PHP executable
+# Example with full PHP path: 0 6,18 * * * /usr/bin/php /path/to/twse_security_monitor.php

@@ -1,0 +1,51 @@
+modules = ["php"]
+
+[nix]
+channel = "stable-24_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "TWSE Security Monitor"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "twse_monitor_test"
+
+[[workflows.workflow]]
+name = "TWSE Security Monitor"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "php twse_security_monitor.php"
+
+[[workflows.workflow]]
+name = "twse_monitor_test"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "php twse_security_monitor.php"
+
+[deployment]
+run = ["sh", "-c", "php twse_security_monitor.php"]
