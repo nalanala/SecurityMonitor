@@ -1,0 +1,13 @@
+# Ignore log files but keep the log directory
+log/*.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore PHP composer dependencies
+/vendor/
+composer.lock
+
+# Ignore environment configuration
+.env
